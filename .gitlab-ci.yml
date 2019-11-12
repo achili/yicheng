@@ -1,0 +1,52 @@
+stages:
+  - install_dependence
+  - run_build
+  - stop_old_service
+  - run_start
+
+cache:
+  paths:
+    - .nuxt/dist/
+    - node_modules/
+
+job_install_dependence:
+  stage: install_dependence
+  script:
+    - echo "开始下载依赖...."
+    - cnpm install
+  tags:
+    - yicheng
+
+job_build:
+  stage: run_build
+  script:
+    - echo "开始编译...."
+    - npm run build
+  tags:
+      - yicheng
+
+job_stop:
+  stage: stop_old_service
+  script:
+    - echo "停止原有服务...."
+    - if [ -f /home/app/pids/yicheng-pid ]; then
+            kill `cat /home/app/pids/yicheng-pid`;
+            rm -rf /home/app/pids/yicheng-pid;
+      fi
+  allow_failure: true
+  tags:
+      - yicheng
+
+job_deploy:
+  stage: run_start
+  script:
+    - echo "开始运行...."
+    - nohup npm run start >/dev/null 2>&1 & echo $! > /home/app/pids/yicheng-pid
+  tags:
+      - yicheng
+
+
+
+
+
+
