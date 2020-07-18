@@ -23,7 +23,7 @@
     "axios": "^0.18.0",
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "nuxt": "^1.0.0"
   },
   "devDependencies": {
