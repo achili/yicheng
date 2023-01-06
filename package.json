@@ -24,7 +24,7 @@
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.11",
-    "nuxt": "^1.0.0"
+    "nuxt": "^3.0.0"
   },
   "devDependencies": {
     "@nuxtjs/axios": "^5.3.1",
